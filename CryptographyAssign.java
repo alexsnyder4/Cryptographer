@@ -2,17 +2,33 @@
 import java.io.*;
 import java.math.BigInteger;
 import java.util.Random;
+import java.util.Scanner;
 
 
 public class CryptographyAssign {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("This tool will take a '.txt' source file and encrypt it using a secure RSA encryption technique and create a new file called 'encrypted_(source file name) \nThe tool will then decrypt the file and create a new file called 'decrypted_(source file name) where the user may view their encrypted and decrypted files as well as the keys used.");
+        
+        String sourceFileName = null;
+        while (sourceFileName == null) 
+        {
+            System.out.println("Enter a txt filename: ");
+            sourceFileName = scanner.nextLine();
+            sourceFileName = fileExistsAndUpdate(sourceFileName); // Validate source file name
+
+            if (sourceFileName == null) 
+            {
+                System.out.println("File not found. Please enter a valid txt filename.");
+            }
+        }
         try {
             makeKeys();
             // Encrypt
-            encrypt("test.txt", "encrypted.txt");
+            encrypt(sourceFileName, "encrypted_" + sourceFileName);
 
             // Decrypt
-            decrypt("encrypted.txt", "decrypted.txt");
+            decrypt(sourceFileName, "decrypted_" + sourceFileName);
 
         } catch (IOException e) {
             System.err.println("IOException: " + e.getMessage());
@@ -184,5 +200,20 @@ public class CryptographyAssign {
         }
         System.out.println("File text.txt has been decrypted");
         System.out.println("----------------------------------------------");
+    }
+    public static String fileExistsAndUpdate(String filename) {
+        if (filename != null) {
+            if (!filename.endsWith(".txt")) {
+                filename = filename + ".txt";
+            }
+            File file = new File(filename);
+            if (file.exists()) {
+                return filename; // File exists, return the updated filename
+            } else {
+                return null; // File does not exist
+            }
+        } else {
+            return null; // Filename is null
+        }
     }
 }
