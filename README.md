@@ -1,7 +1,10 @@
 Cryptographer
 
+DISCLAIMER
+This tool is only built to process txt files, any other files may have unexpected errors.
+
 Description:
-Cryptographer is a Java-based command-line application that provides encryption and decryption functionalities for user-provided files. The application implements RSA encryption along with a Vigenere cipher for secure data transmission and ensures data confidentiality.
+Cryptographer is a Java-based application that provides encryption and decryption functionalities for user-provided txt files. The application implements RSA encryption along with a Vigenere cipher for secure data transmission and ensures data confidentiality.
 
 Features:
 
@@ -13,22 +16,20 @@ Console Output: Provides clear console output messages for encryption and decryp
 
 How to Use:
 
-Encrypting a File:
+Start:
 
-To encrypt a file, specify the source file path as the first argument and the desired encrypted file path as the second argument when running the application.
+Open a terminal window and navigate to the directory with Cryptographer.java file. Compile using these commands:
+    javac Cryptographer.java
+    java Cryptographer
+The program will execute and propt the user for the next steps.
+    
+Encrypting and Decrypting a File:
 
-Example: java CryptographyAssign source.txt encrypted.txt
+To encrypt and decrypt a file, specify the source file path or name when prompted for a filename. 
 
-Decrypting a File:
-
-To decrypt an encrypted file, specify the encrypted file path as the first argument and the desired decrypted file path as the second argument when running the application.
-
-Example: java CryptographyAssign encrypted.txt decrypted.txt
-
-Running the Application:
-
-Compile the Java source file (CryptographyAssign.java) using javac CryptographyAssign.java.
-Run the compiled class file using java CryptographyAssign.
+Example: 
+   "Please enter a txt filename: "
+   test.txt or test (file extensions are optional)
 
 Generating Keys:
 
@@ -39,6 +40,7 @@ Dependencies:
 Java Development Kit (JDK)
 
 License:
+
 Cryptographer is licensed under the MIT License. See the LICENSE file for more details.
 
 Acknowledgments:
