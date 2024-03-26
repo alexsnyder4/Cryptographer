@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 
-public class CryptographyAssign {
+public class Cryptographer {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("This tool will take a '.txt' source file and encrypt it using a secure RSA encryption technique and create a new file called 'encrypted_(source file name) \nThe tool will then decrypt the file and create a new file called 'decrypted_(source file name) where the user may view their encrypted and decrypted files as well as the keys used.");
@@ -13,7 +13,7 @@ public class CryptographyAssign {
         String sourceFileName = null;
         while (sourceFileName == null) 
         {
-            System.out.println("Enter a txt filename: ");
+            System.out.println("Please enter a txt filename: ");
             sourceFileName = scanner.nextLine();
             sourceFileName = fileExistsAndUpdate(sourceFileName); // Validate source file name
 
@@ -38,7 +38,7 @@ public class CryptographyAssign {
     // Generating and storing keys to files pubkey.dat and privkey.dat
     public static void makeKeys() throws IOException {
         // Generate public, secret, and N keys
-        System.out.println("Generating keys");
+        System.out.println("\nGenerating keys");
         BigInteger p, s, N;
         Random rand = new Random();
         BigInteger x = new BigInteger(500, rand).nextProbablePrime();
@@ -73,12 +73,13 @@ public class CryptographyAssign {
             pubKeyOut.writeObject(N);
             privKeyOut.writeObject(s);
             privKeyOut.writeObject(N);
+            /* 
             System.out.println("-----------------------Keys-------------------");
             System.out.println("p: " + p);
             System.out.println("s: " + s);
             System.out.println("N: " + N);
             System.out.println("----------------------------------------------");
-
+            */
         }
     }
 
@@ -140,7 +141,7 @@ public class CryptographyAssign {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("File text.txt has been encrypted");
+        System.out.println("\nFile " + sourceFileName + " has been encrypted");
         System.out.println("----------------------------------------------");
 
     }
@@ -198,7 +199,7 @@ public class CryptographyAssign {
         } catch (ClassNotFoundException e) {
             System.err.println("ClassNotFoundException: " + e.getMessage());
         }
-        System.out.println("File text.txt has been decrypted");
+        System.out.println("\nFile " + encryptedFileName + " has been decrypted");
         System.out.println("----------------------------------------------");
     }
     public static String fileExistsAndUpdate(String filename) {
