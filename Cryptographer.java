@@ -28,7 +28,7 @@ public class Cryptographer {
             encrypt(sourceFileName, "encrypted_" + sourceFileName);
 
             // Decrypt
-            decrypt(sourceFileName, "decrypted_" + sourceFileName);
+            decrypt("encrypted_" + sourceFileName, "decrypted_" + sourceFileName);
 
         } catch (IOException e) {
             System.err.println("IOException: " + e.getMessage());
@@ -143,7 +143,6 @@ public class Cryptographer {
         }
         System.out.println("\nFile " + sourceFileName + " has been encrypted");
         System.out.println("----------------------------------------------");
-
     }
 
         // Decrypt the encrypted file using RSA and the decrypted Vigenere key
